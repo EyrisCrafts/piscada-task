@@ -8,5 +8,7 @@ services/alerting/sensor_pb2.py
 services/alerting/alert_pb2.py
 services/alerting/__pycache__
 services/alerting/.env
+services/historian/.env
+services/historian/__pycache__
 
 

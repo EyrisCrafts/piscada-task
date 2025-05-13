@@ -67,6 +67,21 @@ services:
       - nats
     restart: always
 
+  historian:
+    build:
+      context: .
+      dockerfile: services/historian/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - INFLUXDB_URL=http://influxdb:8086
+      - INFLUXDB_TOKEN=7fb3232841bd35feb7a5
+      - INFLUXDB_ORG=acme_corp
+      - INFLUXDB_BUCKET=the_bucket
+    depends_on:
+      - influxdb
+    restart: always
+
 volumes:
   influxdb2-data:
   influxdb2-config:

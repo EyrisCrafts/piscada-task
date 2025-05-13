@@ -18,6 +18,7 @@ services:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=admin
       - DOCKER_INFLUXDB_INIT_PASSWORD=7fb3232841bd35feb7a5
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=7fb3232841bd35feb7a5
       - DOCKER_INFLUXDB_INIT_ORG=acme_corp
       - DOCKER_INFLUXDB_INIT_BUCKET=the_bucket
     restart: always
@@ -30,6 +31,21 @@ services:
       - NATS_URL=nats://nats:4222
     depends_on:
       - nats
+    restart: always
+  
+  processing:
+    build:
+      context: .
+      dockerfile: services/processing/Dockerfile
+    environment:
+      - INFLUXDB_URL=http://influxdb:8086
+      - INFLUXDB_TOKEN=7fb3232841bd35feb7a5
+      - INFLUXDB_ORG=acme_corp
+      - INFLUXDB_BUCKET=the_bucket
+      - NATS_URL=nats://nats:4222
+    depends_on:
+      - nats
+      - influxdb
     restart: always
 
 volumes:

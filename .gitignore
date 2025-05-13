@@ -1,3 +1,7 @@
 venv
 services/data_ingestion/__pycache__
 services/data_ingestion/sensor_pb2.py
+services/processing/sensor_pb2.py
+services/processing/__pycache__
+services/processing/.env
+

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package alert;
+
+import "google/protobuf/timestamp.proto";
+
+message Alert {
+  string alert_id = 1;
+  string sensor_id = 2;
+  string building_id = 3;
+  string message = 5;
+  google.protobuf.Timestamp timestamp = 6;
+}

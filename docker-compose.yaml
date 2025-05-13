@@ -48,6 +48,25 @@ services:
       - influxdb
     restart: always
 
+  alerting:
+    build:
+      context: .
+      dockerfile: services/alerting/Dockerfile
+    environment:
+      - NATS_URL=nats://nats:4222
+      - INFLUXDB_URL=http://influxdb:8086
+      - INFLUXDB_TOKEN=7fb3232841bd35feb7a5
+      - INFLUXDB_ORG=acme_corp
+      - INFLUXDB_BUCKET=the_bucket
+      - TEMP_MIN=24.0
+      - TEMP_MAX=26.0
+      - HUMIDITY_MIN=35.0
+      - HUMIDITY_MAX=70.0
+      - ENERGY_MAX=4.0
+    depends_on:
+      - nats
+    restart: always
+
 volumes:
   influxdb2-data:
   influxdb2-config:

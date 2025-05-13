@@ -4,4 +4,9 @@ services/data_ingestion/sensor_pb2.py
 services/processing/sensor_pb2.py
 services/processing/__pycache__
 services/processing/.env
+services/alerting/sensor_pb2.py
+services/alerting/alert_pb2.py
+services/alerting/__pycache__
+services/alerting/.env
+
 

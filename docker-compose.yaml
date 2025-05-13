@@ -82,6 +82,18 @@ services:
       - influxdb
     restart: always
 
+
+  web-app:
+    build:
+      context: .
+      dockerfile: services/my-web-app/Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - historian
+      - alerting
+    restart: always
+
 volumes:
   influxdb2-data:
   influxdb2-config:

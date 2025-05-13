@@ -10,5 +10,8 @@ services/alerting/__pycache__
 services/alerting/.env
 services/historian/.env
 services/historian/__pycache__
+services/discord/alert_pb2.py
+services/discord/__pycache__
+services/discord/.env
 
 

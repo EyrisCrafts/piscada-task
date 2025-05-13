@@ -94,6 +94,18 @@ services:
       - alerting
     restart: always
 
+  discord:
+    build:
+      context: .
+      dockerfile: services/discord/Dockerfile
+    environment:
+      - DISCORD_BOT_TOKEN=MTM3MjI0MjE4MjEwNjI1MTM1Ng.GGoK3P.oA-EttJcnapDCtPqJDxhaFV_OEqoTcha7urCwo
+      - NATS_URL=nats://nats:4222
+    depends_on:
+      - nats
+      - alerting
+    restart: always
+
 volumes:
   influxdb2-data:
   influxdb2-config:

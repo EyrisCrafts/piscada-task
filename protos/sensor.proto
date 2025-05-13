@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package building.sensor;
+
+import "google/protobuf/timestamp.proto";
+
+message SensorReading {
+  string sensor_id = 1;
+  string building_id = 2;
+  string floor = 3;
+  string room = 4;
+  google.protobuf.Timestamp timestamp = 5;
+
+  oneof reading {
+    TemperatureReading temperature = 6;
+    HumidityReading humidity = 7;
+    EnergyReading energy = 8;
+  }
+}
+
+message TemperatureReading {
+  float celsius = 1;
+}
+
+message HumidityReading {
+  float percentage = 1;
+}
+
+message EnergyReading {
+  float kilowatts = 1;
+}

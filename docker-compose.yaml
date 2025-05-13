@@ -22,6 +22,16 @@ services:
       - DOCKER_INFLUXDB_INIT_BUCKET=the_bucket
     restart: always
 
+  data_ingestion:
+    build:
+      context: .
+      dockerfile: services/data_ingestion/Dockerfile
+    environment:
+      - NATS_URL=nats://nats:4222
+    depends_on:
+      - nats
+    restart: always
+
 volumes:
   influxdb2-data:
   influxdb2-config:

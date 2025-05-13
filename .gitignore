@@ -1,0 +1,3 @@
+venv
+services/data_ingestion/__pycache__
+services/data_ingestion/sensor_pb2.py
